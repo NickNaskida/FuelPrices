@@ -10,7 +10,7 @@ HEADERS = {
 }
 
 
-def parse_data():
+def parse_gulf_data():
 	response = requests.get(URL, headers=HEADERS)
 	soup = BeautifulSoup(response.content, 'html.parser')
 	items = soup.find_all('div', class_='price_entry')
@@ -24,4 +24,4 @@ def parse_data():
 
 
 if __name__ == "__main__":
-	pprint(parse_data())
+	pprint(parse_gulf_data())
