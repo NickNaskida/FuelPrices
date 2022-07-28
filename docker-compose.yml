@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: ./web/Dockerfile
+    depends_on:
+      - db
+    command: python manager.py run -h 0.0.0.0
+    volumes:
+      - ./web/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - .env.dev
+  db:
+    image: 'postgres:latest'
+    restart: always
+    env_file:
+      - .env.dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:

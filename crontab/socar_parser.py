@@ -18,6 +18,9 @@ def parse_socar_data():
 
 	data = {}
 
+	title_items[3].string.replace_with("ევრო რეგულარი")
+	title_items[5].string.replace_with("ევრო დიზელი")
+
 	for i, j in zip(title_items, price_items):
 		data.update({i.get_text(strip=True): j.get_text(strip=True)})
 

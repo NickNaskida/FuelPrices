@@ -13,12 +13,17 @@ HEADERS = {
 def parse_lukoil_data():
 	response = requests.get(URL, headers=HEADERS)
 	soup = BeautifulSoup(response.content, 'html.parser')
-	items = soup.find_all('div', class_="price-card")
+	items = soup.find_all('div', class_="mt-4 w-full h-2/5 flex justify-center items-center text-xl text-lk-main flex-col")
 
 	data = {}
+	data_values = []
+	data_keys = ["სუპერ ეკტო 100", "სუპერ ეკტო", "პრემიუმ ავანგარდი", "ევრო რეგულარი", "ევრო დიზელი"]
 
 	for i in items:
-		data.update({i.find_all('h3')[0].get_text(strip=True): i.find_all('h3')[1].get_text(strip=True)})
+		data_values.append(i.find_all('p')[0].get_text(strip=True))
+
+	for name, price in zip(data_keys, data_values):
+		data[name] = price
 
 	return data
 

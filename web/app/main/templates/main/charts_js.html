@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+	var chart_options = {
+        series: [{
+              name: 'Posts',
+              data: {{ posts_chart_values|safe }},
+        }],
+        chart: {
+            height: 80,
+            type: 'area',
+            sparkline: {
+                enabled: true
+            },
+        },
+        fill: {
+            opacity: 1,
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        xaxis: {
+            type: 'category',
+            categories: {{ posts_chart_dates|safe }},
+        },
+        yaxis: {
+            labels: {
+                formatter: function(val) {
+                    return val.toFixed(0);
+                }
+            }
+        },
+        title: {
+            text: '',
+        },   
+        tooltip: {
+            x: {
+                format: 'dd/MM/yy'
+            },
+            theme: 'dark',
+        },
+    };
+
+
+    // var chart = new ApexCharts(document.getElementById("posts-chart"), chart_options);
+    // chart.render();
+</script>

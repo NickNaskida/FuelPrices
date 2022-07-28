@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}"/>
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/Glaho-Arial/css/bpg-glaho-arial.min.css') }}">
+
+    <!--  Bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!--  CSS  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!--  Icons  -->
+    <script src="https://kit.fontawesome.com/07848b287b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{{ url_for('main.index') }}">მთავარი</a>
+            <a href="{{ url_for('main.index') }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            </a>
+            <a href="{{ url_for('main.index') }}">API</a>
+        </header>
+
+        <div class="running_cards">
+            <div class="running_card ">
+                price
+            </div>
+            <div class="running_card ">
+                price
+            </div>
+            <div class="running_card ">
+                price
+            </div>
+            <div class="running_card ">
+                price
+            </div>
+            <div class="running_card ">
+                price
+            </div>
+            <div class="running_card ">
+                price
+            </div>
+        </div>
+
+        <footer>
+            <div>
+                <p>Powered by Open Source: <a href="https://github.com/NickNaskida/FuelPrices">Github</a></p>
+            </div>
+
+            <a href="{{ url_for('main.index') }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            </a>
+
+            <ul>
+                <li><a href="{{ url_for('main.index') }}"><b>მთავარი</b></a></li>
+                <li><a href="#"><b>ჩვენს შესახებ</b></a></li>
+                <li><a href="#"><b>API</b></a></li>
+            </ul>
+      </footer>
+    </div>
+
+    {% include 'charts_js.html' %}
+
+    <!--  JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
