@@ -24,6 +24,8 @@ def parse_socar_data():
 	for i, j in zip(title_items, price_items):
 		data.update({i.get_text(strip=True): j.get_text(strip=True)})
 
+	data.pop("CNG ბუნებრივი აირი")
+	data.pop("LPG")
 	return data
 
 

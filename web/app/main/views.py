@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template
 
-from app.main.models import FuelPriceModel
-
 
 main_blueprint = Blueprint(
 		'main',
@@ -13,3 +11,8 @@ main_blueprint = Blueprint(
 @main_blueprint.route('/')
 def index():
 	return render_template('index.html')
+
+
+@main_blueprint.route('/about')
+def about():
+	return render_template('about.html')

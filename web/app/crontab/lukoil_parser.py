@@ -17,12 +17,12 @@ def parse_lukoil_data():
 
 	data = {}
 	data_values = []
-	data_keys = ["სუპერ ეკტო 100", "სუპერ ეკტო", "პრემიუმ ავანგარდი", "ევრო რეგულარი", "ევრო დიზელი"]
+	data_keys = ["სუპერ ეკტო", "პრემიუმ ავანგარდი", "ევრო რეგულარი", "ევრო დიზელი"]
 
-	for i in items:
+	for i in items[0:]:
 		data_values.append(i.find_all('p')[0].get_text(strip=True))
 
-	for name, price in zip(data_keys, data_values):
+	for name, price in zip(data_keys, data_values[1:]):
 		data[name] = price
 
 	return data

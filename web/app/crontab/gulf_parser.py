@@ -20,6 +20,8 @@ def parse_gulf_data():
 	for i in items:
 		data.update({i.find('div', class_='product_name').get_text(strip=True): i.find('div', class_='product_price').get_text(strip=True)})
 
+	data.pop("გაზი")
+
 	return data
 
 

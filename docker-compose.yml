@@ -7,13 +7,14 @@ services:
       dockerfile: ./web/Dockerfile
     depends_on:
       - db
-    command: python manager.py run -h 0.0.0.0
+    command: python manage.py run -h 0.0.0.0
     volumes:
-      - ./web/:/usr/src/app/
+      - ./web:/usr/src/app/
     ports:
       - 5000:5000
     env_file:
       - .env.dev
+    restart: always
   db:
     image: 'postgres:latest'
     restart: always

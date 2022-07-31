@@ -58,6 +58,11 @@
             </div>
         </div>
 
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
         <footer>
             <div>
                 <p>Powered by Open Source: <a href="https://github.com/NickNaskida/FuelPrices">Github</a></p>
@@ -69,7 +74,7 @@
 
             <ul>
                 <li><a href="{{ url_for('main.index') }}"><b>მთავარი</b></a></li>
-                <li><a href="#"><b>ჩვენს შესახებ</b></a></li>
+                <li><a href="{{ url_for('main.about') }}"><b>ჩვენს შესახებ</b></a></li>
                 <li><a href="#"><b>API</b></a></li>
             </ul>
       </footer>

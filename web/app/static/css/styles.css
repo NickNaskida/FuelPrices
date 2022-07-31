@@ -104,7 +104,6 @@ header a:last-child {
 	flex-direction: row;
 	gap: 30px;
 	padding: 10px 15px;
-	margin-bottom: 30px;
 }
 
 .running_card {
@@ -112,6 +111,11 @@ header a:last-child {
 	border-radius: 5px;
 	box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4);
 	height: 100%;
+}
+
+/*==========main===========*/
+main {
+	margin: 25px 0;
 }
 
 /*==========footer============*/

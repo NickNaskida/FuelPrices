@@ -20,6 +20,8 @@ def parse_wissol_data():
 	for i in items:
 		data.update({i['fuelType']: i['price']})
 
+	data.pop('ვისოლ გაზი')
+
 	return data
 
 
