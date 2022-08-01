@@ -1,5 +1,4 @@
-import pytz
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 
 from .gulf_parser import parse_gulf_data
 from .rompetrol_parser import parse_rompetrol_data
@@ -72,7 +71,7 @@ def write_fuel_to_db(name, price, provider):
 	if not parsed_data_confirmation(name, price, fuel_type):
 		return
 
-	fuel_price_objects = fuel_price_model.query.filter_by(provider=provider, type_alt=fuel_type, date=date.today())
+	fuel_price_objects = fuel_price_model.query.filter_by(provider=provider, type_alt=fuel_type, date=datetime.utcnow().date())
 
 	if fuel_price_objects.count() == 0:
 		fuel_price_model.create(
@@ -81,7 +80,7 @@ def write_fuel_to_db(name, price, provider):
 			name=name,
 			type_alt=fuel_type,
 			price=price,
-			date=datetime.now(pytz.timezone('Asia/Tbilisi')).date(),
+			date=date.today(),
 			last_updated=datetime.now()
 		)
 	else:

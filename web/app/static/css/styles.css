@@ -3,6 +3,7 @@ html, body {
     flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
 	width: 100%;
 	margin: 0;
 	font-size: 15px;
@@ -15,6 +16,7 @@ html, body {
 
 body {
 	width: auto;
+	justify-content: flex-start;
 }
 
 *,

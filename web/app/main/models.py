@@ -17,4 +17,4 @@ class FuelPriceModel(db.Model, BaseModel):
 
 	@classmethod
 	def read_today_prices(cls):
-		return cls.query.filter_by(date=datetime.now(pytz.timezone('Asia/Tbilisi')).date()).order_by("type_alt")
+		return cls.query.filter_by(date=datetime.utcnow().date()).order_by("type_alt")
