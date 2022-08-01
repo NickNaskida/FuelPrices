@@ -1,3 +1,5 @@
+{% from "macros.html" import card_logo_img %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
     <!--  Fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/Glaho-Arial/css/bpg-glaho-arial.min.css') }}">
 
@@ -37,25 +39,25 @@
             <a href="{{ url_for('main.index') }}">API</a>
         </header>
 
-        <div class="running_cards">
-            <div class="running_card ">
-                price
-            </div>
-            <div class="running_card ">
-                price
-            </div>
-            <div class="running_card ">
-                price
-            </div>
-            <div class="running_card ">
-                price
-            </div>
-            <div class="running_card ">
-                price
-            </div>
-            <div class="running_card ">
-                price
-            </div>
+        <div class="running_cards" id="running_cards_div">
+            {% for price_obj in today_prices %}
+                <div class="running_card ">
+                    <div class="running_card_logo">
+                        {{ card_logo_img(price_obj.provider) }}
+                    </div>
+                    <div class="running_card_info">
+                        <div class="running_card_price">
+                            {{ '%0.2f'|format(price_obj.price) }}
+                        </div>
+                        <div class="running_card_info_name">
+                            {{ price_obj.name }}
+                        </div>
+                        <div class="running_card_info_date">
+                            {{ price_obj.last_updated.strftime('%H:%M %d-%b-%Y') }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
 
         <main>
@@ -84,5 +86,6 @@
 
     <!--  JS  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

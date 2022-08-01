@@ -7,10 +7,14 @@ html, body {
 	margin: 0;
 	font-size: 15px;
 	color: #000;
-	overflow-x: hidden;
+    overflow-x: hidden;
 	font-family: "BPG Glaho Arial", sans-serif;
 	background-color: #73b4fe;
     /*font-family: 'Rubik', sans-serif;*/
+}
+
+body {
+	width: auto;
 }
 
 *,
@@ -35,10 +39,11 @@ a:hover {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
 	width: 100%;
-	margin: 30px;
+	margin: 30px 0px;
 	padding: 0;
 	background-color: #fcfffe;
 	border-radius: 12px;
+	z-index: 3;
 }
 
 /*==========scrollbar===========*/
@@ -100,17 +105,69 @@ header a:last-child {
 /*=========subheader=========*/
 
 .running_cards {
-	display: flex;
+	display: inline-flex;
 	flex-direction: row;
-	gap: 30px;
+	flex-wrap: nowrap;
+	gap: 20px;
 	padding: 10px 15px;
+	width: 100%;
 }
 
 .running_card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
 	padding: 5px 10px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4);
-	height: 100%;
+	min-height: 70px;
+	height: 80px;
+	animation-name: marqueeLine;
+	animation-duration: 60s;
+	animation-timing-function: linear;
+    animation-delay: 0s;
+	animation-iteration-count: infinite;
+
+}
+
+.running_card_logo img {
+	height: auto;
+	width: 55px;
+}
+
+.running_card_info {
+	display: flex;
+	flex-direction: column;
+	width: 170px;
+}
+
+.running_card_info_name {
+	line-height: 1.2;
+	font-size: 14px;
+}
+
+.running_card_info_date {
+	font-family: 'Rubik', sans-serif;
+	font-weight: 400;
+	font-size: 12px;
+}
+
+.running_card_price {
+	font-weight: 500;
+	font-size: 19px;
+	font-family: 'Rubik', sans-serif;
+	line-height: 1.2;
+}
+
+@keyframes marqueeLine {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-5850px);
+  }
 }
 
 /*==========main===========*/

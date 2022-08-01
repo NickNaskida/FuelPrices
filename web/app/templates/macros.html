@@ -1,0 +1,13 @@
+{% macro card_logo_img(provider) %}
+    {% if provider == "Socar" %}
+        <img src="{{ url_for('static', filename='img/socar_logo.png') }}" alt="Fuel provider logo">
+    {% elif provider == "Lukoil" %}
+        <img src="{{ url_for('static', filename='img/lukoil_logo.png') }}" alt="Fuel provider logo">
+    {% elif provider == "Gulf" %}
+        <img src="{{ url_for('static', filename='img/gulf_logo.png') }}" alt="Fuel provider logo">
+    {% elif provider == "Rompetrol" %}
+        <img src="{{ url_for('static', filename='img/rompetrol_logo.png') }}" alt="Fuel provider logo">
+    {% elif provider == "Wissol" %}
+        <img src="{{ url_for('static', filename='img/wissol_logo.png') }}" alt="Fuel provider logo">
+    {% endif %}
+{% endmacro %}
