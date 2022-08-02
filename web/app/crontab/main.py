@@ -10,10 +10,14 @@ from app.extensions import db
 from app.main.models import FuelPriceModel
 
 
-def parsing_error_notify(message, exc=None):
+def notify_about_issue(message, exc):
 	# TODO implement parsing error notify function
-	print(message)
 	pass
+
+
+def temporary_fix_issue(message, exc=None):
+	# TODO implement temporary fix function
+	notify_about_issue(message, exc)
 
 
 def parsed_data_confirmation(name, price, fuel_type):
@@ -27,7 +31,7 @@ def parsed_data_confirmation(name, price, fuel_type):
 	]
 
 	if name not in names_list:
-		parsing_error_notify('NAME CHECK FAILED')
+		temporary_fix_issue('NAME CHECK FAILED')
 		return False
 
 	# price check
@@ -35,12 +39,12 @@ def parsed_data_confirmation(name, price, fuel_type):
 	try:
 		float(price)
 	except Exception as exc:
-		parsing_error_notify('PRICE CHECK FAILED', exc)
+		temporary_fix_issue('PRICE CHECK FAILED', exc)
 		return False
 
 	# fuel type check
 	if fuel_type is None:
-		parsing_error_notify('FUEL TYPE CHECK FAILED')
+		temporary_fix_issue('FUEL TYPE CHECK FAILED')
 		return False
 
 	return True
@@ -64,7 +68,7 @@ def get_fuel_type(fuel_name):
 	return None
 
 
-def write_fuel_to_db(name, price, provider):
+def fill_db_with_parsed_data(name, price, provider):
 	fuel_price_model = FuelPriceModel()
 	fuel_type = get_fuel_type(name)
 
@@ -99,32 +103,32 @@ def write_fuel_to_db(name, price, provider):
 def parse_data():
 	try:
 		for name, price in parse_gulf_data().items():
-			write_fuel_to_db(name, price, 'Gulf')
+			fill_db_with_parsed_data(name, price, 'Gulf')
 	except Exception as exc:
-		parsing_error_notify('MESSAGE_TEXT', exc)
+		temporary_fix_issue('MESSAGE_TEXT', exc)
 
 	try:
 		for name, price in parse_rompetrol_data().items():
-			write_fuel_to_db(name, price, 'Rompetrol')
+			fill_db_with_parsed_data(name, price, 'Rompetrol')
 	except Exception as exc:
-		parsing_error_notify('MESSAGE_TEXT', exc)
+		temporary_fix_issue('MESSAGE_TEXT', exc)
 
 	try:
 		for name, price in parse_wissol_data().items():
-			write_fuel_to_db(name, price, 'Wissol')
+			fill_db_with_parsed_data(name, price, 'Wissol')
 	except Exception as exc:
-		parsing_error_notify('MESSAGE_TEXT', exc)
+		temporary_fix_issue('MESSAGE_TEXT', exc)
 
 	try:
 		for name, price in parse_lukoil_data().items():
-			write_fuel_to_db(name, price, 'Lukoil')
+			fill_db_with_parsed_data(name, price, 'Lukoil')
 	except Exception as exc:
-		parsing_error_notify('MESSAGE_TEXT', exc)
+		temporary_fix_issue('MESSAGE_TEXT', exc)
 
 	try:
 		for name, price in parse_socar_data().items():
-			write_fuel_to_db(name, price, 'Socar')
+			fill_db_with_parsed_data(name, price, 'Socar')
 	except Exception as exc:
-		parsing_error_notify('MESSAGE_TEXT', exc)
+		temporary_fix_issue('MESSAGE_TEXT', exc)
 
 	db.session.commit()

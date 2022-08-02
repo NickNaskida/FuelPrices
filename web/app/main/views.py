@@ -11,7 +11,9 @@ main_blueprint = Blueprint(
 
 @main_blueprint.app_context_processor
 def inject_today_prices():
-	return dict(today_prices=FuelPriceModel.read_today_prices())
+	return dict(
+		today_prices=FuelPriceModel.read_today_prices()
+	)
 
 
 @main_blueprint.route('/')
@@ -22,3 +24,8 @@ def index():
 @main_blueprint.route('/about')
 def about():
 	return render_template('about.html')
+
+
+@main_blueprint.route('/api')
+def api():
+	return render_template('api.html')

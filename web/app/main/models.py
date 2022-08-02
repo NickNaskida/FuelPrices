@@ -1,5 +1,4 @@
-import pytz
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from app.extensions import db
 from app.models.models import BaseModel
@@ -18,3 +17,7 @@ class FuelPriceModel(db.Model, BaseModel):
 	@classmethod
 	def read_today_prices(cls):
 		return cls.query.filter_by(date=datetime.utcnow().date()).order_by("type_alt")
+
+	# @classmethod
+	# def get_previous_day_price_change(cls):
+	# 	prices = cls.query.filter_by(date=datetime.utcnow().date() - timedelta(days=1)).order_by("type_alt")

@@ -25,6 +25,10 @@ body {
     box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
 a {
 	color: #000;
 	text-decoration: none;
@@ -156,10 +160,18 @@ header a:last-child {
 }
 
 .running_card_price {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	font-weight: 500;
 	font-size: 19px;
 	font-family: 'Rubik', sans-serif;
 	line-height: 1.2;
+}
+
+.running_card_price .badge {
+	font-size: 12px;
+	font-weight: 400;
 }
 
 @keyframes marqueeLine {
@@ -174,7 +186,13 @@ header a:last-child {
 
 /*==========main===========*/
 main {
-	margin: 25px 0;
+	padding: 25px 15px;
+}
+
+.content_title {
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 32px;
 }
 
 /*==========footer============*/

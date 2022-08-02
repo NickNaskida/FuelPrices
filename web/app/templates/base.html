@@ -47,7 +47,10 @@
                     </div>
                     <div class="running_card_info">
                         <div class="running_card_price">
-                            {{ '%0.2f'|format(price_obj.price) }}
+                            {{ '%0.2f'|format(price_obj.price) }} &#8382;
+                            <span class="badge" style="background-color: #16c784">
+                                <i class="fa-solid fa-arrow-down"></i> 0.02 &#8382;
+                            </span>
                         </div>
                         <div class="running_card_info_name">
                             {{ price_obj.name }}
@@ -61,6 +64,13 @@
         </div>
 
         <main>
+            <div class="content_title">
+                <h1>
+                    {% block content_title %}
+                    {% endblock %}
+                </h1>
+            </div>
+
             {% block content %}
             {% endblock %}
         </main>
@@ -75,9 +85,9 @@
             </a>
 
             <ul>
-                <li><a href="{{ url_for('main.index') }}"><b>მთავარი</b></a></li>
-                <li><a href="{{ url_for('main.about') }}"><b>ჩვენს შესახებ</b></a></li>
-                <li><a href="#"><b>API</b></a></li>
+                <li><a href="{{ url_for('main.index') }}">მთავარი</a></li>
+                <li><a href="{{ url_for('main.about') }}">ჩვენს შესახებ</a></li>
+                <li><a href="{{ url_for('main.api') }}">API</a></li>
             </ul>
       </footer>
     </div>
