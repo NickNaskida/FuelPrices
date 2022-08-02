@@ -17,6 +17,10 @@ def notify_about_issue(message, exc):
 
 def temporary_fix_issue(message, exc=None):
 	# TODO implement temporary fix function
+	"""
+	fill db temporary with previous day data. If error isn't resolved in 24 hrs changes will be done by hand.
+	Otherwise after resolve the script will update data
+	"""
 	notify_about_issue(message, exc)
 
 

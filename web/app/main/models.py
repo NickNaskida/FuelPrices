@@ -15,7 +15,7 @@ class FuelPriceModel(db.Model, BaseModel):
 	last_updated = db.Column(db.DateTime, nullable=False)
 
 	@classmethod
-	def read_today_prices(cls):
+	def read_current_prices(cls):
 		return cls.query.filter_by(date=datetime.utcnow().date()).order_by("type_alt")
 
 	# @classmethod
